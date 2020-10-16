@@ -164,6 +164,19 @@ void postOrder(Node* root){
 	}
 }
 
+int countLeafNode(node* r){
+	
+}
+
+int countNodes(){
+	countLeafNode(node* r){
+
+	}
+	countNonLeafNode(node* r){
+
+	}
+}
+
 int main(){
 	int option;
 	while (true){
