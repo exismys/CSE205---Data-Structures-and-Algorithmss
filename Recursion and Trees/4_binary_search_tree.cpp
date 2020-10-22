@@ -11,18 +11,15 @@ Node* root = NULL;
 Node* parent = NULL;
 
 Node* search(int item){
-	Node* loc = NULL;
 	Node* ptr = NULL;
 	Node* save = NULL;
 	if (root == NULL){
-		loc = NULL;
 		parent = NULL;
-		return loc;
+		return NULL;
 	}
 	else if (item == root->data){
-		loc = root;
 		parent = NULL;
-		return loc;
+		return root;
 	}
 	else if (item < root->data){
 		ptr = root->left;
@@ -34,9 +31,8 @@ Node* search(int item){
 	}
 	while (ptr != NULL){
 		if (item == ptr->data){
-			loc = ptr;
 			parent = save;
-			return loc;
+			return ptr;
 		}
 		else if (item < ptr->data){
 			save = ptr;
@@ -47,9 +43,8 @@ Node* search(int item){
 			ptr = ptr->right;
 		}
 	}
-	loc = NULL;
 	parent = save;
-	return loc;
+	return ptr;
 }
 
 void insert(int item){
@@ -74,7 +69,7 @@ void insert(int item){
 	}
 }
 
-// delete if there is no or one child node
+// delete if there is zero or one child node
 void del1(Node* n, Node* par){
 	Node* child = NULL;
 	if (n->left == NULL && n->right == NULL){

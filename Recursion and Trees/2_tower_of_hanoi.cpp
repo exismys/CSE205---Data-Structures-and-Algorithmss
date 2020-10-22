@@ -14,6 +14,13 @@ void Tower(int n, char beg, char aux, char end){
 }
 
 int main(){
-    Tower(4, 'A', 'B', 'C');
+    while (true){
+        int num;
+        cout << "Enter the number of disk: ";
+        cin >> num;
+        Tower(num, 'A', 'B', 'C');
+        step = 0;
+        cout << "pres ctrl+c to quit the program" << endl;
+    }
     return 0;
 }
