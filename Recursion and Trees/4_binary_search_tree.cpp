@@ -1,4 +1,5 @@
 #include <iostream>
+#include <deque>
 using namespace std;
 
 struct Node{
@@ -159,17 +160,38 @@ void postOrder(Node* root){
 	}
 }
 
-int countLeafNode(node* r){
-	
+void levelOrder(Node* root){
+	Node* ptr = NULL;
+	deque<Node*> myqueue;
+	myqueue.push_back(root);
+	while (!myqueue.empty()){
+		ptr = myqueue.front();
+		cout << ptr->data << " ";
+		myqueue.push_back(root->left);
+		myqueue.push_back(root->right);
+		myqueue.pop_front();
+	}
+	cout << endl;
 }
 
-int countNodes(){
-	countLeafNode(node* r){
-
+int height(Node* root){
+	if (root == NULL){
+		return -1;
 	}
-	countNonLeafNode(node* r){
+	int left_height = height(root->left);
+	int right_height = height(root->right);
+	int height = max(left_height, right_height) + 1;
+	return height;
+}
 
+int countNodes(Node* root){
+	if (root == NULL){
+		return 0;
 	}
+	int left_count = countNodes(root->left);
+	int right_count = countNodes(root->right);
+	int count = left_count + right_count + 1;
+	return count;
 }
 
 int main(){
@@ -180,7 +202,9 @@ int main(){
 		cout << "3. inOrder traversal" << endl;
 		cout << "4. postOrder traversal" << endl;
 		cout << "5. To delete an item" << endl;
-		cout << "6. To quit the program" << endl;
+		cout << "6. To calculate the height of the tree" << endl;
+		cout << "7. To count the nodes" << endl;
+		cout << "8. To quit the program" << endl;
 		cout << "Enter: ";
 		cin >> option;
 		if (option == 1){
@@ -205,6 +229,12 @@ int main(){
 			del(item);
 		}
 		else if (option == 6){
+			cout << "Height: " << height(root) << endl;
+		}
+		else if (option == 7){
+			cout << "No. of nodes: " << countNodes(root) << endl;
+		}
+		else if (option == 8){
 			break;
 		}
 		else{
